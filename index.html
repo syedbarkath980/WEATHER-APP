@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEATHER APP</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <div class="main-page">
+        <p id="loading-text">Loading...</p>
+        <div id="error-message" style="display: none; color: red; padding: 15px; background-color: #ffe6e6; border-radius: 5px; margin-bottom: 20px; text-align: center;"></div>
+        <div class="blurred-content">
+            <h2>WEATHER APP</h2>
+            <div class="search-container">
+                <input id="location-input-field" type="text" placeholder="Enter location...">
+                <button id="search-btn">SEARCH</button>
+            </div>
+            <div class="content-container">
+                <div class="weather-details-card">
+                    <h3>WEATHER DETAILS :</h3>
+                    <div class="weather-info">
+                        <p id="city"><span class="label">City:</span> <span class="value"></span></p>
+                        <p id="temp"><span class="label">Temperature:</span> <span class="value"></span></p>
+                        <p id="hum"><span class="label">Humidity:</span> <span class="value"></span></p>
+                        <p id="windspeed"><span class="label">Wind Speed:</span> <span class="value"></span></p>
+                        <p id="weatherdesc"><span class="label">Weather Description:</span> <span class="value"></span></p>
+                    </div>
+                </div>
+                <div class="recent-section">
+                    <p class="recent-title">RECENT SEARCH :</p>
+                    <div class="recent-search-card">
+                        <ul>
+                            
+                        </ul>
+                        <!-- Recent searches will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>

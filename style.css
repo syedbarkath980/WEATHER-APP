@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+    --bg-top: #eaf6ff;
+    --bg-bottom: #cfe9ff;
+    --card: #ffffff;
+    --ink: #1b2a3a;
+    --muted: #5a6b7a;
+    --line: #d9e4ef;
+    --accent: #2b6cb0;
+    --shadow: 0 12px 24px rgba(28, 56, 90, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+}
+
+.main-page {
+    width: 100%;
+    font-family: "Space Grotesk", sans-serif;
+    padding: 20px 24px 28px;
+    position: relative;
+}
+
+.blurred-content {
+    transition: filter 0.5s ease;
+}
+
+.main-page.is-loading .blurred-content {
+    filter: blur(3px);
+}
+
+.main-page h2 {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 30px;
+    letter-spacing: 1.5px;
+    color: var(--ink);
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto 20px;
+    max-width: 760px;
+}
+
+#location-input-field {
+    width: 100%;
+    max-width: 420px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    outline: none;
+    background-color: var(--card);
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+#location-input-field:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.18);
+}
+
+#search-btn {
+    padding: 12px 26px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    background-color: var(--ink);
+    color: #ffffff;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 16px rgba(27, 42, 58, 0.2);
+}
+
+#search-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 22px rgba(27, 42, 58, 0.25);
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 28px;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.weather-details-card {
+    flex: 1;
+    background-color: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 26px;
+    height: 280px;
+    /* align-self: flex-start; */
+    box-shadow: var(--shadow);
+}
+
+.weather-details-card h3 {
+    margin-bottom: 18px;
+    font-size: 16px;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+    letter-spacing: 0.6px;
+}
+
+.weather-info p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: var(--muted);
+    /* border-bottom: 1px dashed var(--line); */
+    padding-bottom: 8px;
+}
+
+.weather-info .label {
+    font-weight: 700;
+    color: var(--ink);
+    display: inline-block;
+    min-width: 180px;
+    margin-right: 10px;
+}
+
+.recent-section {
+    flex: 0 0 280px;
+}
+
+.recent-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+    letter-spacing: 0.6px;
+}
+
+.recent-search-card {
+    background-color: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px;
+    min-height: 220px;
+    box-shadow: var(--shadow);
+}
+
+#loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: var(--ink);
+    z-index: 2;
+}
+
+ul li {
+    margin-left: 12px;
+    list-style-type: square;
+}
+
+li {
+    line-height: 35px;
+    font-size: large;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+li:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+    .content-container {
+        flex-direction: column;
+    }
+
+    .recent-section {
+        flex: 1 1 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .search-container {
+        flex-direction: column;
+    }
+
+    #search-btn {
+        width: 100%;
+        max-width: 240px;
+    }
+}
+
+@media (min-height: 850px) {
+    .search-container {
+        margin-top: 32px;
+    }
+
+    .content-container {
+        margin-top: 10px;
+    }
+}
