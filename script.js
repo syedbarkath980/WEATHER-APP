@@ -1,4 +1,4 @@
-const API_KEY = import.meta.env.VITE_API_KEY
+const API_KEY = "60c61ddaa34a4d5995f181334260303"
 
 // DOM Elements
 let input = document.querySelector("input")
