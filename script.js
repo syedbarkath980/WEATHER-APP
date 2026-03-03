@@ -1,3 +1,5 @@
+const API_KEY = import.meta.env.VITE_API_KEY
+
 // DOM Elements
 let input = document.querySelector("input")
 let searchButton = document.querySelector("#search-btn")
@@ -24,7 +26,7 @@ unorderedList.addEventListener("click", function (event) {
         loading.style.display = "block"
         mainPage.classList.add("is-loading")
         let city = event.target.textContent.toLowerCase()
-        let api = `https://corsproxy.io/?https://wttr.in/${city}?format=j1`
+        let api = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`
         fetchDataFromApi(api, city)
     }
 })
@@ -60,7 +62,7 @@ searchButton.addEventListener("click", function () {
         return
     }
 
-    let api = `https://corsproxy.io/?https://wttr.in/${city}?format=j1`
+    let api = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`
     fetchDataFromApi(api, city)
 })
 
@@ -80,22 +82,19 @@ async function fetchDataFromApi(api, city) {
         let result = await response.json()
         errorMessage.style.display = "none"
 
-        // Extract weather data
-        let current = result.current_condition[0]
-        let today = result.weather[0]
-
-        // Capitalize city name
-        let displayCity = city
-        if (displayCity.length > 0) {
-            displayCity = displayCity[0].toUpperCase() + displayCity.slice(1)
-        }
+        // Extract weather data from WeatherAPI.com response
+        let displayCity = result.location.name
+        let temp = result.current.temp_c
+        let humidity = result.current.humidity
+        let windSpeed = result.current.wind_kph
+        let weatherDesc = result.current.condition.text
 
         // Update UI with weather information
         cityInfo.querySelector(".value").textContent = displayCity
-        tempInfo.querySelector(".value").textContent = `${today.avgtempC} °C`
-        humidityInfo.querySelector(".value").textContent = `${current.humidity}%`
-        windspeedInfo.querySelector(".value").textContent = `${current.windspeedKmph} km/h`
-        weatherDescInfo.querySelector(".value").textContent = current.weatherDesc[0].value
+        tempInfo.querySelector(".value").textContent = `${temp} °C`
+        humidityInfo.querySelector(".value").textContent = `${humidity}%`
+        windspeedInfo.querySelector(".value").textContent = `${windSpeed} km/h`
+        weatherDescInfo.querySelector(".value").textContent = weatherDesc
 
         // Save city to recent searches
         if (!cityNames.includes(city.toLowerCase())) {
